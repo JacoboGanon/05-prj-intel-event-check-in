@@ -147,6 +147,17 @@ button:hover {
   box-shadow: 0 6px 15px rgba(0, 113, 197, 0.3);
 }
 
+/* Clear button styling */
+.clear-btn {
+  background-color: #dc3545;
+  margin-left: 10px;
+}
+
+.clear-btn:hover {
+  background-color: #c82333;
+  box-shadow: 0 6px 15px rgba(220, 53, 69, 0.3);
+}
+
 /* Icon spacing */
 .fas {
   margin-right: 8px;
@@ -342,6 +353,10 @@ select {
   color: #475569;
 }
 
+.list {
+  list-style-type: none;
+}
+
 /* Mobile responsive */
 @media (max-width: 768px) {
   .hero {
@@ -368,11 +383,183 @@ select {
     height: 50px;
   }
 
+  .clear-btn {
+    margin-left: 0;
+    margin-top: 10px;
+  }
+
   .input-wrapper {
     flex-direction: column;
   }
 
   .teams-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+/* Celebration Popup Styles */
+.celebration-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.celebration-overlay.hidden {
+  display: none;
+}
+
+.celebration-popup {
+  background: white;
+  border-radius: 20px;
+  padding: 0;
+  max-width: 500px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  animation: popIn 0.5s ease-out;
+  overflow: hidden;
+}
+
+.celebration-content {
+  padding: 40px 30px;
+  background: linear-gradient(135deg, #0071c5 0%, #00aeef 100%);
+  color: white;
+  position: relative;
+}
+
+.celebration-content::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="30" r="1.5" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="70" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="90" cy="80" r="2.5" fill="rgba(255,255,255,0.1)"/><circle cx="10" cy="90" r="1.5" fill="rgba(255,255,255,0.1)"/></svg>')
+    repeat;
+  pointer-events: none;
+}
+
+.celebration-icon {
+  font-size: 60px;
+  margin-bottom: 20px;
+  animation: bounce 2s infinite;
+}
+
+.celebration-popup h2 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.celebration-popup p {
+  font-size: 18px;
+  margin-bottom: 25px;
+  opacity: 0.9;
+}
+
+.winning-team {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  padding: 20px;
+  margin: 20px 0;
+  font-size: 20px;
+  font-weight: 600;
+  backdrop-filter: blur(10px);
+}
+
+.celebration-close-btn {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  padding: 12px 24px;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.celebration-close-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+/* Team highlighting for winners */
+.team-card.winner {
+  background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%) !important;
+  border: 3px solid #ffc107;
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(255, 193, 7, 0.4);
+  animation: winnerGlow 2s ease-in-out infinite alternate;
+}
+
+.team-card.winner .team-name {
+  color: #8b4513;
+  font-weight: 700;
+}
+
+.team-card.winner .team-count {
+  color: #8b4513;
+  font-size: 24px;
+  font-weight: 800;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes popIn {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-20px);
+  }
+  60% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes winnerGlow {
+  0% {
+    box-shadow: 0 8px 25px rgba(255, 193, 7, 0.4);
+  }
+  100% {
+    box-shadow: 0 12px 35px rgba(255, 193, 7, 0.7);
   }
 }

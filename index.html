@@ -70,15 +70,33 @@
           <div class="team-card water">
             <span class="team-name">🌊 Team Water Wise</span>
             <span class="team-count" id="waterCount">0</span>
+            <ol id="waterList" class="list"></ol>
           </div>
           <div class="team-card zero">
             <span class="team-name">🌿 Team Net Zero</span>
             <span class="team-count" id="zeroCount">0</span>
+            <ol id="zeroList" class="list"></ol>
           </div>
           <div class="team-card power">
             <span class="team-name">⚡ Team Renewables</span>
             <span class="team-count" id="powerCount">0</span>
+            <ol id="powerList" class="list"></ol>
           </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Celebration Popup -->
+    <div id="celebrationOverlay" class="celebration-overlay hidden">
+      <div class="celebration-popup">
+        <div class="celebration-content">
+          <div class="celebration-icon">🎉</div>
+          <h2>Congratulations!</h2>
+          <p>We've reached our attendance goal of 50 people!</p>
+          <div id="winningTeamAnnouncement" class="winning-team"></div>
+          <button id="closeCelebration" class="celebration-close-btn">
+            <i class="fas fa-times"></i> Close
+          </button>
         </div>
       </div>
     </div>
@@ -92,6 +110,7 @@
       >
     </footer>
 
+    <script src="data.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
